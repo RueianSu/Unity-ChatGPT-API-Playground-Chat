@@ -32,7 +32,7 @@ namespace CallChatAPI
 
         private IEnumerator CallOpenAIChatAPI(string key, string systemName, List<string> chatMessage, string modelGPT, Action<string> resultCallback,string apiUrl = "https://api.openai.com/v1/chat/completions")
         {
-            var apiKey = key; // Replace with your OpenAI API key
+            var apiKey = key; //your OpenAI API key
 
             var messagesList = MessagesToList(systemName, chatMessage);
 
