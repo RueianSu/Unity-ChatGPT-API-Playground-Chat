@@ -22,8 +22,8 @@ namespace CallChatAPI
         /// <param name="key">you api key</param>
         /// <param name="systemName">專家名稱</param>
         /// <param name="chatMessage">需要問答內容</param>
-        /// <param name="modelGPT">使用模型版本</param>
         /// <param name="resultCallback">返回內容</param>
+        /// <param name="modelGPT">使用模型版本</param>
         public static void PostChatAPI(string key, string systemName, List<string> chatMessage, Action<string> resultCallback, string modelGPT = "gpt-3.5-turbo")
         {
             var instance = new GameObject().AddComponent<ChatAPI>();
