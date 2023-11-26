@@ -45,7 +45,7 @@ namespace CallChatAPI
             var apiKey = key; // Replace with your OpenAI API key
             var apiUrl = "https://api.openai.com/v1/chat/completions";
 
-            var messagesList = GetMessages(systemName, chatMessage);
+            var messagesList = MessagesToList(systemName, chatMessage);
 
             var requestData = new
             {
@@ -95,7 +95,7 @@ namespace CallChatAPI
         /// <param name="systemName">訓練專家名稱</param>
         /// <param name="chatMessage">輸入內容</param>
         /// <returns></returns>
-        private List<ChatMessage> GetMessages(string systemName, List<string> chatMessage)
+        private List<ChatMessage> MessagesToList(string systemName, List<string> chatMessage)
         {
             var newMessages = new List<ChatMessage>();
 
