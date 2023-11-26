@@ -22,29 +22,17 @@ namespace CallChatAPI
         /// <param name="key">you api key</param>
         /// <param name="systemName">專家名稱</param>
         /// <param name="chatMessage">需要問答內容</param>
-        /// <param name="resultCallback">返回內容</param>
-        public static void PostChatAPI(string key, string systemName, List<string> chatMessage, Action<string> resultCallback = null)
-        {
-            ChatAPI.PostChatAPI(key, systemName, chatMessage, "gpt-3.5-turbo", resultCallback);
-        }
-        /// <summary>
-        /// 取得 ChatAPI 回答文字
-        /// </summary>
-        /// <param name="key">you api key</param>
-        /// <param name="systemName">專家名稱</param>
-        /// <param name="chatMessage">需要問答內容</param>
         /// <param name="modelGPT">使用模型版本</param>
         /// <param name="resultCallback">返回內容</param>
-        public static void PostChatAPI(string key, string systemName, List<string> chatMessage, string modelGPT = "gpt-3.5-turbo", Action<string> resultCallback = null)
+        public static void PostChatAPI(string key, string systemName, List<string> chatMessage, Action<string> resultCallback, string modelGPT = "gpt-3.5-turbo")
         {
             var instance = new GameObject().AddComponent<ChatAPI>();
             instance.StartCoroutine(instance.CallOpenAIChatAPI(key, systemName, chatMessage, modelGPT, resultCallback));
         }
 
-        private IEnumerator CallOpenAIChatAPI(string key, string systemName, List<string> chatMessage, string modelGPT, Action<string> resultCallback)
+        private IEnumerator CallOpenAIChatAPI(string key, string systemName, List<string> chatMessage, string modelGPT, Action<string> resultCallback,string apiUrl = "https://api.openai.com/v1/chat/completions")
         {
             var apiKey = key; // Replace with your OpenAI API key
-            var apiUrl = "https://api.openai.com/v1/chat/completions";
 
             var messagesList = MessagesToList(systemName, chatMessage);
 
